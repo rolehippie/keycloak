@@ -1,0 +1,237 @@
+# Standards: 1.2
+---
+# @var keycloak_version:description: Version of keycloak to use
+keycloak_version: 15.1.1
+
+# @var keycloak_image:description: Docker image to use for deployment
+keycloak_image: "quay.io/keycloak/keycloak:{{ keycloak_version }}"
+
+# @var keycloak_pull_image:description: Pull image as part of the tasks
+keycloak_pull_image: True
+
+# @var keycloak_network:description: Optionally assign this Docker network to container
+keycloak_network:
+
+# @var keycloak_default_publish:description: List of default port publishing
+# @var keycloak_default_publish:example: >
+# keycloak_default_publish:
+#   - 127.0.0.1:9090:9090
+# @end
+keycloak_default_publish:
+  - "{{ keycloak_http_port }}:{{ keycloak_http_port }}"
+  - "{{ keycloak_https_port }}:{{ keycloak_https_port }}"
+
+# @var keycloak_extra_publish:description: List of extra port publishing
+# @var keycloak_extra_publish:example: >
+# keycloak_extra_publish:
+#   - 8090:8090
+#   - 127.0.0.1:9000:9000
+# @end
+keycloak_extra_publish: []
+
+# @var keycloak_default_labels:description: List of default labels to assign to docker command
+keycloak_default_labels: []
+
+# @var keycloak_extra_labels:description: List of extra labels to assign to docker command
+keycloak_extra_labels: []
+
+# @var keycloak_default_folders:description: List of default folders to create
+keycloak_default_folders: []
+
+# @var keycloak_extra_folders:description: List of extra folders to create
+# @var keycloak_extra_folders:example: >
+# keycloak_extra_folders:
+#   - /path/to/host/folder1
+#   - /path/to/host/folder2
+#   - /path/to/host/folder3
+# @end
+keycloak_extra_folders: []
+
+# @var keycloak_default_volumes:description: List of default volumes to mount
+keycloak_default_volumes: []
+
+# @var keycloak_extra_volumes:description: List of extra volumes to mount
+# @var keycloak_extra_volumes:example: >
+# keycloak_extra_volumes:
+#   - /path/to/host/folder1:/path/within/container1
+#   - /path/to/host/folder2:/path/within/container2
+#   - /path/to/host/folder3:/path/within/container3
+# @end
+keycloak_extra_volumes: []
+
+# @var keycloak_user:description: User to create for container usage
+keycloak_user: keycloak
+
+# @var keycloak_group:description: Group to create for container usage
+keycloak_group: keycloak
+
+# @var keycloak_url:description: URL for external access
+# @var keycloak_url:example: $ "https://keycloak.example.com"
+keycloak_url:
+
+# @var keycloak_hostname:description: Static hostname for the instance
+keycloak_hostname: "{{ inventory_hostname }}"
+
+# @var keycloak_username:description: Username for master realm access
+keycloak_username:
+
+# @var keycloak_password:description: Password for master realm access
+keycloak_password:
+
+# @var keycloak_loglevel:description: Logging level for the instance
+keycloak_loglevel: INFO
+
+# @var keycloak_http_port:description: Port binding for HTTP connections
+keycloak_http_port: 8080
+
+# @var keycloak_https_port:description: Port binding for HTTPS connections
+keycloak_https_port: 8443
+
+# @var keycloak_always_https:description: Alsways enforce HTTPS connections
+keycloak_always_https: True
+
+# @var keycloak_proxy_address_forwarding:description: Enable proxy address forwarding
+keycloak_proxy_address_forwarding: True
+
+# @var keycloak_database_type:description: Database driver
+keycloak_database_type: mariadb
+
+# @var keycloak_database_connection:description: Database connectiony type for clustered databases
+keycloak_database_connection:
+
+# @var keycloak_database_addresses:description: List of database server addresses
+# @var keycloak_database_addresses:example: >
+# keycloak_database_addresses:
+#   - host1
+#   - host2
+#   - host3
+# @end
+keycloak_database_addresses: []
+
+# @var keycloak_database_name:description: Database name
+keycloak_database_name: keycloak
+
+# @var keycloak_database_schema:description: Database schema used for PostgreSQL
+keycloak_database_schema:
+
+# @var keycloak_database_username:description: Username for database connection
+keycloak_database_username:
+
+# @var keycloak_database_password:description: Password for database connection
+keycloak_database_password:
+
+# @var keycloak_cache_owners_count:description: Cache owners count
+keycloak_cache_owners_count: 1
+
+# @var keycloak_cache_owners_auth_sessions_count:description: Cache owners auth sessions count
+keycloak_cache_owners_auth_sessions_count: 1
+
+# @var keycloak_jgroups_discovery_enabled:description: Enable jgroups discovery
+keycloak_jgroups_discovery_enabled: False
+
+# @var keycloak_jgroups_discovery_external_ip:description: External IP used for jgroups discovery
+# @var keycloak_url:example: $ "{{ ansible_address }}"
+keycloak_jgroups_discovery_external_ip:
+
+# @var keycloak_jgroups_discovery_protocol:description: Protocol used for jgroups discovery
+# @var keycloak_url:example: $ "JDBC_PING"
+keycloak_jgroups_discovery_protocol:
+
+# @var keycloak_jgroups_discovery_properties:description: Additional properties for jgroups discovery
+# @var keycloak_url:example: $ "datasource_jndi_name=java:jboss/datasources/KeycloakDS"
+keycloak_jgroups_discovery_properties:
+
+# @var keycloak_themes_path:description: Path to store themes
+keycloak_themes_path: /usr/share/keycloak/themes
+
+# @var keycloak_default_themes:description: List of default themes
+# @var keycloak_default_themes:example: >
+# keycloak_default_themes:
+#   - name: example-from-url
+#     url: http://example.com/example.tar.gz
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_default_themes: []
+
+# @var keycloak_extra_themes:description: List of extra themes
+# @var keycloak_extra_themes:example: >
+# keycloak_extra_themes:
+#   - name: example-from-url
+#     url: http://example.com/example.tar.gz
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_extra_themes: []
+
+# @var keycloak_extensions_path:description: Path to store extensions
+keycloak_extensions_path: /usr/share/keycloak/extensions
+
+# @var keycloak_default_extensions:description: List of default extensions
+# @var keycloak_default_extensions:example: >
+# keycloak_default_extensions:
+#   - name: example-from-url
+#     url: http://example.com/example.jar
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_default_extensions:
+  - name: keycloak-metrics-spi
+    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
+
+# @var keycloak_extra_extensions:description: List of extra extensions
+# @var keycloak_extra_extensions:example: >
+# keycloak_extra_extensions:
+#   - name: example-from-url
+#     url: http://example.com/example.jar
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_extra_extensions: []
+
+# @var keycloak_startups_path:description: Path to store startup scripts
+# @var keycloak_startups_path:example: >
+# keycloak_startups_path:
+#   - name: example
+#     content: |
+#       embed-server --server-config=standalone-ha.xml --std-out=echo
+#       batch
+#       run-batch
+#       stop-embedded-server
+#   - name: example-from-url
+#     url: http://example.com/example.yml
+#   - name: example-from-file
+#     src: path/to/file.j2
+#   - name: example-from-template
+#     template: path/to/template.j2
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_startups_path: /usr/share/keycloak/startups
+
+# @var keycloak_default_startups:description: List of default startup scripts
+# @var keycloak_default_startups:example: >
+# keycloak_default_startups:
+#   - name: example
+#     content: |
+#       embed-server --server-config=standalone-ha.xml --std-out=echo
+#       batch
+#       run-batch
+#       stop-embedded-server
+#   - name: example-from-url
+#     url: http://example.com/example.yml
+#   - name: example-from-file
+#     src: path/to/file.j2
+#   - name: example-from-template
+#     template: path/to/template.j2
+#   - name: example-to-remove
+#     state: absent
+# @end
+keycloak_default_startups:
+  - name: keycloak
+    template: keycloak.j2
+
+# @var keycloak_extra_startups:description: List of extra startup scripts
+keycloak_extra_startups: []
+
+...

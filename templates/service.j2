@@ -1,0 +1,39 @@
+[Unit]
+Description=Keycloak
+
+Wants=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=10s
+EnvironmentFile=/etc/environment
+
+ExecStop=/bin/sh -c '/usr/bin/docker ps | /bin/grep %p 1> /dev/null && /usr/bin/docker stop %p || true'
+ExecStartPre=/bin/sh -c '/usr/bin/docker ps | /bin/grep %p 1> /dev/null && /usr/bin/docker kill %p || true'
+ExecStartPre=/bin/sh -c '/usr/bin/docker ps -a | /bin/grep %p 1> /dev/null && /usr/bin/docker rm %p || true'
+ExecStart=/usr/bin/docker run --rm \
+  --name %p \
+  --hostname %H \
+{% for item in keycloak_default_labels + keycloak_extra_labels %}
+  --label {{ item }} \
+{% endfor %}
+  --env-file /etc/default/keycloak \
+{% if keycloak_network | default(False) %}
+  --network {{ keycloak_network }} \
+{% endif %}
+{% for item in keycloak_default_themes + keycloak_extra_themes %}
+  --volume {{ keycloak_themes_path }}/{{ item.name }}:/opt/jboss/keycloak/themes/{{ item.name }} \
+{% endfor %}
+  --volume {{ keycloak_extensions_path }}:/opt/jboss/keycloak/providers \
+  --volume {{ keycloak_startups_path }}:/opt/jboss/startup-scripts \
+{% for item in keycloak_default_volumes + keycloak_extra_volumes %}
+  --volume {{ item }} \
+{% endfor %}
+{% for item in keycloak_default_publish + keycloak_extra_publish %}
+  --publish {{ item }} \
+{% endfor %}
+  {{ keycloak_image }}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+# Standards: 1.2
+---
+- name: Restart keycloak
+  systemd:
+    name: keycloak
+    state: restarted
+    daemon_reload: True
+
+...

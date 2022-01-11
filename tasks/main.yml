@@ -1,0 +1,248 @@
+# Standards: 1.2
+---
+- name: Create defined group
+  register: keycloak_group_result
+  group:
+    name: "{{ keycloak_group }}"
+    system: True
+    state: present
+  tags:
+    - keycloak
+
+- name: Create defined user
+  register: keycloak_user_result
+  user:
+    name: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    password: "!"
+    shell: /usr/sbin/nologin
+    create_home: False
+    system: True
+    state: present
+  tags:
+    - keycloak
+
+- name: Create required directories
+  loop: "{{ keycloak_default_folders + keycloak_extra_folders }}"
+  file:
+    path: "{{ item }}"
+    recurse: True
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: u=rwx,g=rx,o=rx
+    state: directory
+  tags:
+    - keycloak
+
+- name: Create themes directory
+  file:
+    path: "{{ keycloak_themes_path }}"
+    recurse: True
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: u=rwx,g=rx,o=rx
+    state: directory
+  tags:
+    - keycloak
+
+- name: Theme from url
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_themes + keycloak_extra_themes }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.url | default(False) and item.state | default("present") == "present"
+  unarchive:
+    src: "{{ item.url }}"
+    dest: "{{ item.path | default(keycloak_themes_path) }}/{{ item.name }}"
+    remote_src: True
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Delete defined themes
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_themes + keycloak_extra_themes }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.state | default("present") == "absent"
+  file:
+    path: "{{ item.path | default(keycloak_themes_path) }}/{{ item.name }}"
+    state: absent
+  tags:
+    - keycloak
+
+- name: Create extensions directory
+  file:
+    path: "{{ keycloak_extensions_path }}"
+    recurse: True
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: u=rwx,g=rx,o=rx
+    state: directory
+  tags:
+    - keycloak
+
+- name: Extension from url
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_extensions + keycloak_extra_extensions }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.url | default(False) and item.state | default("present") == "present"
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Delete defined extensions
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_extensions + keycloak_extra_extensions }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.state | default("present") == "absent"
+  file:
+    path: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
+    state: absent
+  tags:
+    - keycloak
+
+- name: Create startups directory
+  file:
+    path: "{{ keycloak_startups_path }}"
+    recurse: True
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: u=rwx,g=rx,o=rx
+    state: directory
+  tags:
+    - keycloak
+
+- name: Startup from url
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.url | default(False) and item.state | default("present") == "present"
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Startup from content
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.content | default(False) and item.state | default("present") == "present"
+  copy:
+    content: "{{ item.content }}"
+    dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Startup from file
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.src | default(False) and item.state | default("present") == "present"
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Startup from template
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.template | default(False) and item.state | default("present") == "present"
+  template:
+    src: "{{ item.template }}"
+    dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    mode: o=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Delete defined startups
+  notify:
+    - Restart keycloak
+  loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.state | default("present") == "absent"
+  file:
+    path: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    state: absent
+  tags:
+    - keycloak
+
+- name: Write default config
+  notify:
+    - Restart keycloak
+  template:
+    src: default.j2
+    dest: /etc/default/keycloak
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Write service file
+  notify:
+    - Restart keycloak
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/keycloak.service
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - keycloak
+
+- name: Pull docker image
+  when: keycloak_pull_image
+  docker_image:
+    name: "{{ keycloak_image }}"
+    source: pull
+  tags:
+    - keycloak
+
+- name: Start keycloak service
+  systemd:
+    name: keycloak
+    state: started
+    daemon_reload: True
+    masked: False
+    enabled: True
+  tags:
+    - keycloak
+
+...

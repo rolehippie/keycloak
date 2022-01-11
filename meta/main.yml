@@ -1,0 +1,42 @@
+# Standards: 1.2
+---
+# @meta author:value: [Thomas Boerger](https://github.com/tboerger)
+# @meta description: >
+# [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/keycloak)
+# [![Testing Build](https://github.com/rolehippie/keycloak/workflows/testing/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Atesting)
+# [![Readme Build](https://github.com/rolehippie/keycloak/workflows/readme/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Areadme)
+# [![Galaxy Build](https://github.com/rolehippie/keycloak/workflows/galaxy/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Agalaxy)
+# [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/keycloak)](https://github.com/rolehippie/keycloak/blob/master/LICENSE)
+#
+# Ansible role to install and configure Keycloak identity service.
+#
+# ## Sponsor
+#
+# [![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
+#
+# Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
+# @end
+# @meta dependencies:value: >
+# [rolehippie.docker](https://github.com/rolehippie/docker)
+# @end
+galaxy_info:
+  role_name: keycloak
+  namespace: rolehippie
+  author: Thomas Boerger
+  description: Ansible role to install and configure Keycloak identity service
+  license: Apache-2.0
+  min_ansible_version: 2.10
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+  galaxy_tags:
+    - identity
+    - idp
+    - openid
+    - oidc
+
+dependencies: []
+
+...

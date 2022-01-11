@@ -1,0 +1,34 @@
+KEYCLOAK_USER={{ keycloak_username }}
+KEYCLOAK_PASSWORD={{ keycloak_password }}
+{% if keycloak_url | default(False) %}
+KEYCLOAK_FRONTEND_URL={{ keycloak_url }}
+{% endif %}
+KEYCLOAK_LOGLEVEL={{ keycloak_loglevel }}
+KEYCLOAK_HOSTNAME={{ keycloak_hostname }}
+KEYCLOAK_HTTP_PORT={{ keycloak_http_port }}
+KEYCLOAK_HTTPS_PORT={{ keycloak_https_port }}
+KEYCLOAK_ALWAYS_HTTPS={{ keycloak_always_https | lower }}
+PROXY_ADDRESS_FORWARDING={{ keycloak_proxy_address_forwarding | lower }}
+
+CACHE_OWNERS_COUNT={{ keycloak_cache_owners_count }}
+CACHE_OWNERS_AUTH_SESSIONS_COUNT={{ keycloak_cache_owners_auth_sessions_count }}
+
+DB_VENDOR={{ keycloak_database_type }}
+{% if keycloak_database_connection | default(False) %}
+DB_CONNECTION={{ keycloak_database_connection }}
+{% endif %}
+DB_ADDR={{ keycloak_database_addresses | join(',') }}
+DB_DATABASE={{ keycloak_database_name }}
+{% if keycloak_database_schema | default(False) %}
+DB_SCHEMA={{ keycloak_database_schema }}
+{% endif %}
+DB_USER={{ keycloak_database_username }}
+DB_PASSWORD={{ keycloak_database_password }}
+{% if keycloak_jgroups_discovery_enabled | default(False) %}
+
+JGROUPS_DISCOVERY_EXTERNAL_IP={{ keycloak_jgroups_discovery_external_ip }}
+JGROUPS_DISCOVERY_PROTOCOL={{ keycloak_jgroups_discovery_protocol }}
+{% if keycloak_jgroups_discovery_properties | default(False) %}
+JGROUPS_DISCOVERY_PROPERTIES={{ keycloak_jgroups_discovery_properties }}
+{% endif %}
+{% endif %}
