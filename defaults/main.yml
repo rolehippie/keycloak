@@ -88,7 +88,7 @@ keycloak_http_port: 8080
 keycloak_https_port: 8443
 
 # @var keycloak_always_https:description: Alsways enforce HTTPS connections
-keycloak_always_https: True
+keycloak_always_https: False
 
 # @var keycloak_proxy_address_forwarding:description: Enable proxy address forwarding
 keycloak_proxy_address_forwarding: True
