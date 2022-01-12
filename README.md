@@ -73,7 +73,7 @@ Alsways enforce HTTPS connections
 #### Default value
 
 ```YAML
-keycloak_always_https: true
+keycloak_always_https: false
 ```
 
 ### keycloak_cache_owners_auth_sessions_count
