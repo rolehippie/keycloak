@@ -29,7 +29,7 @@
     recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwx,g=rx,o=rx
+    mode: u=rwX,g=rX,o=rX
     state: directory
   tags:
     - keycloak
@@ -40,7 +40,7 @@
     recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwx,g=rx,o=rx
+    mode: u=rwX,g=rX,o=rX
     state: directory
   tags:
     - keycloak
@@ -58,7 +58,7 @@
     remote_src: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 
@@ -81,7 +81,7 @@
     recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwx,g=rx,o=rx
+    mode: u=rwX,g=rX,o=rX
     state: directory
   tags:
     - keycloak
@@ -98,7 +98,7 @@
     dest: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 
@@ -121,7 +121,7 @@
     recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwx,g=rx,o=rx
+    mode: u=rwX,g=rX,o=rX
     state: directory
   tags:
     - keycloak
@@ -138,7 +138,7 @@
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 
@@ -154,7 +154,7 @@
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 
@@ -170,7 +170,7 @@
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 
@@ -186,7 +186,7 @@
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: o=rw,g=r,o=r
+    mode: o=rwx,g=rx,o=rx
   tags:
     - keycloak
 

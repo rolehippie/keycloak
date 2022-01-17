@@ -17,9 +17,7 @@ keycloak_network:
 # keycloak_default_publish:
 #   - 127.0.0.1:9090:9090
 # @end
-keycloak_default_publish:
-  - "{{ keycloak_http_port }}:{{ keycloak_http_port }}"
-  - "{{ keycloak_https_port }}:{{ keycloak_https_port }}"
+keycloak_default_publish: []
 
 # @var keycloak_extra_publish:description: List of extra port publishing
 # @var keycloak_extra_publish:example: >
@@ -69,9 +67,6 @@ keycloak_group: keycloak
 # @var keycloak_url:example: $ "https://keycloak.example.com"
 keycloak_url:
 
-# @var keycloak_hostname:description: Static hostname for the instance
-keycloak_hostname: "{{ inventory_hostname }}"
-
 # @var keycloak_username:description: Username for master realm access
 keycloak_username:
 
@@ -80,15 +75,6 @@ keycloak_password:
 
 # @var keycloak_loglevel:description: Logging level for the instance
 keycloak_loglevel: INFO
-
-# @var keycloak_http_port:description: Port binding for HTTP connections
-keycloak_http_port: 8080
-
-# @var keycloak_https_port:description: Port binding for HTTPS connections
-keycloak_https_port: 8443
-
-# @var keycloak_always_https:description: Alsways enforce HTTPS connections
-keycloak_always_https: False
 
 # @var keycloak_proxy_address_forwarding:description: Enable proxy address forwarding
 keycloak_proxy_address_forwarding: True
