@@ -13,7 +13,6 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
 ## Table of content
 
 * [Default Variables](#default-variables)
-  * [keycloak_always_https](#keycloak_always_https)
   * [keycloak_cache_owners_auth_sessions_count](#keycloak_cache_owners_auth_sessions_count)
   * [keycloak_cache_owners_count](#keycloak_cache_owners_count)
   * [keycloak_database_addresses](#keycloak_database_addresses)
@@ -39,9 +38,6 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
   * [keycloak_extra_themes](#keycloak_extra_themes)
   * [keycloak_extra_volumes](#keycloak_extra_volumes)
   * [keycloak_group](#keycloak_group)
-  * [keycloak_hostname](#keycloak_hostname)
-  * [keycloak_http_port](#keycloak_http_port)
-  * [keycloak_https_port](#keycloak_https_port)
   * [keycloak_image](#keycloak_image)
   * [keycloak_jgroups_discovery_enabled](#keycloak_jgroups_discovery_enabled)
   * [keycloak_jgroups_discovery_external_ip](#keycloak_jgroups_discovery_external_ip)
@@ -65,16 +61,6 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
 ---
 
 ## Default Variables
-
-### keycloak_always_https
-
-Alsways enforce HTTPS connections
-
-#### Default value
-
-```YAML
-keycloak_always_https: false
-```
 
 ### keycloak_cache_owners_auth_sessions_count
 
@@ -224,9 +210,7 @@ List of default port publishing
 #### Default value
 
 ```YAML
-keycloak_default_publish:
-  - '{{ keycloak_http_port }}:{{ keycloak_http_port }}'
-  - '{{ keycloak_https_port }}:{{ keycloak_https_port }}'
+keycloak_default_publish: []
 ```
 
 #### Example usage
@@ -432,36 +416,6 @@ Group to create for container usage
 
 ```YAML
 keycloak_group: keycloak
-```
-
-### keycloak_hostname
-
-Static hostname for the instance
-
-#### Default value
-
-```YAML
-keycloak_hostname: '{{ inventory_hostname }}'
-```
-
-### keycloak_http_port
-
-Port binding for HTTP connections
-
-#### Default value
-
-```YAML
-keycloak_http_port: 8080
-```
-
-### keycloak_https_port
-
-Port binding for HTTPS connections
-
-#### Default value
-
-```YAML
-keycloak_https_port: 8443
 ```
 
 ### keycloak_image
