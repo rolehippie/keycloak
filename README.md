@@ -1,62 +1,63 @@
 # keycloak
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/keycloak) [![Testing Build](https://github.com/rolehippie/keycloak/workflows/testing/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/keycloak/workflows/readme/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/keycloak/workflows/galaxy/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/keycloak)](https://github.com/rolehippie/keycloak/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/keycloak) [![Testing Build](https://github.com/rolehippie/keycloak/workflows/testing/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/keycloak/workflows/readme/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/keycloak/workflows/galaxy/badge.svg)](https://github.com/rolehippie/keycloak/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/keycloak)](https://github.com/rolehippie/keycloak/blob/master/LICENSE)
 
-Ansible role to install and configure Keycloak identity service. 
+Ansible role to install and configure Keycloak identity service.
 
-## Sponsor 
+## Sponsor
 
-[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu) 
+[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
 
 Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
 
 ## Table of content
 
-* [Default Variables](#default-variables)
-  * [keycloak_cache_owners_auth_sessions_count](#keycloak_cache_owners_auth_sessions_count)
-  * [keycloak_cache_owners_count](#keycloak_cache_owners_count)
-  * [keycloak_database_addresses](#keycloak_database_addresses)
-  * [keycloak_database_connection](#keycloak_database_connection)
-  * [keycloak_database_name](#keycloak_database_name)
-  * [keycloak_database_password](#keycloak_database_password)
-  * [keycloak_database_schema](#keycloak_database_schema)
-  * [keycloak_database_type](#keycloak_database_type)
-  * [keycloak_database_username](#keycloak_database_username)
-  * [keycloak_default_extensions](#keycloak_default_extensions)
-  * [keycloak_default_folders](#keycloak_default_folders)
-  * [keycloak_default_labels](#keycloak_default_labels)
-  * [keycloak_default_publish](#keycloak_default_publish)
-  * [keycloak_default_startups](#keycloak_default_startups)
-  * [keycloak_default_themes](#keycloak_default_themes)
-  * [keycloak_default_volumes](#keycloak_default_volumes)
-  * [keycloak_extensions_path](#keycloak_extensions_path)
-  * [keycloak_extra_extensions](#keycloak_extra_extensions)
-  * [keycloak_extra_folders](#keycloak_extra_folders)
-  * [keycloak_extra_labels](#keycloak_extra_labels)
-  * [keycloak_extra_publish](#keycloak_extra_publish)
-  * [keycloak_extra_startups](#keycloak_extra_startups)
-  * [keycloak_extra_themes](#keycloak_extra_themes)
-  * [keycloak_extra_volumes](#keycloak_extra_volumes)
-  * [keycloak_group](#keycloak_group)
-  * [keycloak_image](#keycloak_image)
-  * [keycloak_jgroups_discovery_enabled](#keycloak_jgroups_discovery_enabled)
-  * [keycloak_jgroups_discovery_external_ip](#keycloak_jgroups_discovery_external_ip)
-  * [keycloak_jgroups_discovery_properties](#keycloak_jgroups_discovery_properties)
-  * [keycloak_jgroups_discovery_protocol](#keycloak_jgroups_discovery_protocol)
-  * [keycloak_loglevel](#keycloak_loglevel)
-  * [keycloak_network](#keycloak_network)
-  * [keycloak_password](#keycloak_password)
-  * [keycloak_proxy_address_forwarding](#keycloak_proxy_address_forwarding)
-  * [keycloak_pull_image](#keycloak_pull_image)
-  * [keycloak_startups_path](#keycloak_startups_path)
-  * [keycloak_themes_path](#keycloak_themes_path)
-  * [keycloak_url](#keycloak_url)
-  * [keycloak_user](#keycloak_user)
-  * [keycloak_username](#keycloak_username)
-  * [keycloak_version](#keycloak_version)
-* [Dependencies](#dependencies)
-* [License](#license)
-* [Author](#author)
+- [Default Variables](#default-variables)
+  - [keycloak_cache_owners_auth_sessions_count](#keycloak_cache_owners_auth_sessions_count)
+  - [keycloak_cache_owners_count](#keycloak_cache_owners_count)
+  - [keycloak_database_addresses](#keycloak_database_addresses)
+  - [keycloak_database_connection](#keycloak_database_connection)
+  - [keycloak_database_name](#keycloak_database_name)
+  - [keycloak_database_password](#keycloak_database_password)
+  - [keycloak_database_schema](#keycloak_database_schema)
+  - [keycloak_database_type](#keycloak_database_type)
+  - [keycloak_database_username](#keycloak_database_username)
+  - [keycloak_default_extensions](#keycloak_default_extensions)
+  - [keycloak_default_folders](#keycloak_default_folders)
+  - [keycloak_default_labels](#keycloak_default_labels)
+  - [keycloak_default_publish](#keycloak_default_publish)
+  - [keycloak_default_startups](#keycloak_default_startups)
+  - [keycloak_default_themes](#keycloak_default_themes)
+  - [keycloak_default_volumes](#keycloak_default_volumes)
+  - [keycloak_extensions_path](#keycloak_extensions_path)
+  - [keycloak_extra_extensions](#keycloak_extra_extensions)
+  - [keycloak_extra_folders](#keycloak_extra_folders)
+  - [keycloak_extra_labels](#keycloak_extra_labels)
+  - [keycloak_extra_publish](#keycloak_extra_publish)
+  - [keycloak_extra_startups](#keycloak_extra_startups)
+  - [keycloak_extra_themes](#keycloak_extra_themes)
+  - [keycloak_extra_volumes](#keycloak_extra_volumes)
+  - [keycloak_group](#keycloak_group)
+  - [keycloak_image](#keycloak_image)
+  - [keycloak_jgroups_discovery_enabled](#keycloak_jgroups_discovery_enabled)
+  - [keycloak_jgroups_discovery_external_ip](#keycloak_jgroups_discovery_external_ip)
+  - [keycloak_jgroups_discovery_properties](#keycloak_jgroups_discovery_properties)
+  - [keycloak_jgroups_discovery_protocol](#keycloak_jgroups_discovery_protocol)
+  - [keycloak_loglevel](#keycloak_loglevel)
+  - [keycloak_network](#keycloak_network)
+  - [keycloak_password](#keycloak_password)
+  - [keycloak_proxy_address_forwarding](#keycloak_proxy_address_forwarding)
+  - [keycloak_pull_image](#keycloak_pull_image)
+  - [keycloak_startups_path](#keycloak_startups_path)
+  - [keycloak_themes_path](#keycloak_themes_path)
+  - [keycloak_url](#keycloak_url)
+  - [keycloak_user](#keycloak_user)
+  - [keycloak_username](#keycloak_username)
+  - [keycloak_version](#keycloak_version)
+- [Discovered Tags](#discovered-tags)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -604,9 +605,14 @@ Version of keycloak to use
 keycloak_version: 15.1.1
 ```
 
+## Discovered Tags
+
+**_keycloak_**
+
+
 ## Dependencies
 
-* [rolehippie.docker](https://github.com/rolehippie/docker)
+- [rolehippie.docker](https://github.com/rolehippie/docker)
 
 ## License
 
