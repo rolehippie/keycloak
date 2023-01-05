@@ -3,7 +3,7 @@
 - name: Converge
   hosts: all
   roles:
-    - role: docker
-    - role: keycloak
+    - role: rolehippie.docker
+    - role: rolehippie.keycloak
 
 ...
