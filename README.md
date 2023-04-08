@@ -15,6 +15,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 ## Table of content
 
+- [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [keycloak_cache_owners_auth_sessions_count](#keycloak_cache_owners_auth_sessions_count)
   - [keycloak_cache_owners_count](#keycloak_cache_owners_count)
@@ -63,6 +64,11 @@ Building and improving this Ansible role have been sponsored by my current and p
 - [Author](#author)
 
 ---
+
+## Requirements
+
+- Minimum Ansible version: `2.10`
+
 
 ## Default Variables
 
