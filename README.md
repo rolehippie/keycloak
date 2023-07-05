@@ -19,6 +19,10 @@ Building and improving this Ansible role have been sponsored by my current and p
 - [Default Variables](#default-variables)
   - [keycloak_cache_owners_auth_sessions_count](#keycloak_cache_owners_auth_sessions_count)
   - [keycloak_cache_owners_count](#keycloak_cache_owners_count)
+  - [keycloak_command](#keycloak_command)
+  - [keycloak_container_extensions_path](#keycloak_container_extensions_path)
+  - [keycloak_container_scripts_path](#keycloak_container_scripts_path)
+  - [keycloak_container_themes_path](#keycloak_container_themes_path)
   - [keycloak_database_addresses](#keycloak_database_addresses)
   - [keycloak_database_connection](#keycloak_database_connection)
   - [keycloak_database_name](#keycloak_database_name)
@@ -42,16 +46,20 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_extra_themes](#keycloak_extra_themes)
   - [keycloak_extra_volumes](#keycloak_extra_volumes)
   - [keycloak_group](#keycloak_group)
+  - [keycloak_hostname](#keycloak_hostname)
+  - [keycloak_http_relative_path](#keycloak_http_relative_path)
   - [keycloak_image](#keycloak_image)
   - [keycloak_jgroups_discovery_enabled](#keycloak_jgroups_discovery_enabled)
   - [keycloak_jgroups_discovery_external_ip](#keycloak_jgroups_discovery_external_ip)
   - [keycloak_jgroups_discovery_properties](#keycloak_jgroups_discovery_properties)
   - [keycloak_jgroups_discovery_protocol](#keycloak_jgroups_discovery_protocol)
+  - [keycloak_legacy_startups](#keycloak_legacy_startups)
   - [keycloak_loglevel](#keycloak_loglevel)
   - [keycloak_network](#keycloak_network)
   - [keycloak_password](#keycloak_password)
   - [keycloak_proxy_address_forwarding](#keycloak_proxy_address_forwarding)
   - [keycloak_pull_image](#keycloak_pull_image)
+  - [keycloak_shell](#keycloak_shell)
   - [keycloak_startups_path](#keycloak_startups_path)
   - [keycloak_themes_path](#keycloak_themes_path)
   - [keycloak_url](#keycloak_url)
@@ -90,6 +98,49 @@ Cache owners count
 
 ```YAML
 keycloak_cache_owners_count: 1
+```
+
+### keycloak_command
+
+Command to pass to Keycloak container
+
+#### Default value
+
+```YAML
+keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else\
+  \ '' }}"
+```
+
+### keycloak_container_extensions_path
+
+Path for providers within the container
+
+#### Default value
+
+```YAML
+keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version\
+  \ is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
+```
+
+### keycloak_container_scripts_path
+
+Path for startup scripts within the container
+
+#### Default value
+
+```YAML
+keycloak_container_scripts_path: /opt/jboss/startup-scripts
+```
+
+### keycloak_container_themes_path
+
+Path for themes within the container
+
+#### Default value
+
+```YAML
+keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is\
+  \ version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
 ```
 
 ### keycloak_database_addresses
@@ -237,9 +288,8 @@ List of default startup scripts
 #### Default value
 
 ```YAML
-keycloak_default_startups:
-  - name: keycloak
-    template: keycloak.j2
+keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else\
+  \ keycloak_legacy_startups }}"
 ```
 
 #### Example usage
@@ -428,6 +478,26 @@ Group to create for container usage
 keycloak_group: keycloak
 ```
 
+### keycloak_hostname
+
+Hostname for Keycloak
+
+#### Default value
+
+```YAML
+keycloak_hostname:
+```
+
+### keycloak_http_relative_path
+
+Relative path to Keycloak
+
+#### Default value
+
+```YAML
+keycloak_http_relative_path:
+```
+
 ### keycloak_image
 
 Docker image to use for deployment
@@ -478,6 +548,18 @@ Protocol used for jgroups discovery
 keycloak_jgroups_discovery_protocol:
 ```
 
+### keycloak_legacy_startups
+
+List of startup scripts befor 20.0.0
+
+#### Default value
+
+```YAML
+keycloak_legacy_startups:
+  - name: keycloak
+    template: keycloak.j2
+```
+
 ### keycloak_loglevel
 
 Logging level for the instance
@@ -526,6 +608,16 @@ Pull image as part of the tasks
 
 ```YAML
 keycloak_pull_image: true
+```
+
+### keycloak_shell
+
+Shell of the Keycloak user
+
+#### Default value
+
+```YAML
+keycloak_shell: /usr/sbin/nologin
 ```
 
 ### keycloak_startups_path
@@ -611,7 +703,7 @@ Version of keycloak to use
 #### Default value
 
 ```YAML
-keycloak_version: 15.1.1
+keycloak_version: 21.1.2
 ```
 
 ## Discovered Tags

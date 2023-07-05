@@ -1,7 +1,15 @@
+{% if keycloak_version is version('20.0.0', '<') %}
 KEYCLOAK_USER={{ keycloak_username }}
 KEYCLOAK_PASSWORD={{ keycloak_password }}
+{% else %}
+KEYCLOAK_ADMIN={{ keycloak_username }}
+KEYCLOAK_ADMIN_PASSWORD={{ keycloak_password }}
+{% endif %}
 {% if keycloak_url | default(False) %}
 KEYCLOAK_FRONTEND_URL={{ keycloak_url }}
+{% endif %}
+{% if keycloak_hostname | default(False) %}
+KEYCLOAK_HOSTNAME={{ keycloak_hostname }}
 {% endif %}
 KEYCLOAK_LOGLEVEL={{ keycloak_loglevel }}
 
@@ -9,6 +17,7 @@ PROXY_ADDRESS_FORWARDING={{ keycloak_proxy_address_forwarding | lower }}
 
 CACHE_OWNERS_COUNT={{ keycloak_cache_owners_count }}
 CACHE_OWNERS_AUTH_SESSIONS_COUNT={{ keycloak_cache_owners_auth_sessions_count }}
+{% if keycloak_version is version('20.0.0', '<') %}
 
 DB_VENDOR={{ keycloak_database_type }}
 {% if keycloak_database_connection | default(False) %}
@@ -21,6 +30,24 @@ DB_SCHEMA={{ keycloak_database_schema }}
 {% endif %}
 DB_USER={{ keycloak_database_username }}
 DB_PASSWORD={{ keycloak_database_password }}
+{% else %}
+{% if keycloak_http_relative_path | default(False) %}
+
+KC_HTTP_RELATIVE_PATH={{ keycloak_http_relative_path }}
+{% endif %}
+
+KC_DB={{ keycloak_database_type }}
+{% if keycloak_database_connection | default(False) %}
+KC_DB_URL={{ keycloak_database_connection }}
+{% endif %}
+KC_DB_URL_HOST={{ keycloak_database_addresses | join(',') }}
+KC_DB_URL_DATABASE={{ keycloak_database_name }}
+{% if keycloak_database_schema | default(False) %}
+KC_DB_SCHEMA={{ keycloak_database_schema }}
+{% endif %}
+KC_DB_USERNAME={{ keycloak_database_username }}
+KC_DB_PASSWORD={{ keycloak_database_password }}
+{% endif %}
 {% if keycloak_jgroups_discovery_enabled | default(False) %}
 
 JGROUPS_DISCOVERY_EXTERNAL_IP={{ keycloak_jgroups_discovery_external_ip }}

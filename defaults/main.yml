@@ -1,7 +1,8 @@
 # Standards: 1.2
 ---
 # @var keycloak_version:description: Version of keycloak to use
-keycloak_version: 15.1.1
+# renovate: datasource=github-releases depName=keycloak/keycloak
+keycloak_version: 21.1.2
 
 # @var keycloak_image:description: Docker image to use for deployment
 keycloak_image: "quay.io/keycloak/keycloak:{{ keycloak_version }}"
@@ -66,6 +67,18 @@ keycloak_group: keycloak
 # @var keycloak_url:description: URL for external access
 # @var keycloak_url:example: $ "https://keycloak.example.com"
 keycloak_url:
+
+# @var keycloak_http_relative_path:description: Relative path to Keycloak
+keycloak_http_relative_path:
+
+# @var keycloak_hostname:description: Hostname for Keycloak
+keycloak_hostname:
+
+# @var keycloak_command:description: Command to pass to Keycloak container
+keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else '' }}"
+
+# @var keycloak_shell:description: Shell of the Keycloak user
+keycloak_shell: /usr/sbin/nologin
 
 # @var keycloak_username:description: Username for master realm access
 keycloak_username:
@@ -213,11 +226,24 @@ keycloak_startups_path: /usr/share/keycloak/startups
 #   - name: example-to-remove
 #     state: absent
 # @end
-keycloak_default_startups:
-  - name: keycloak
-    template: keycloak.j2
+keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else keycloak_legacy_startups }}"
 
 # @var keycloak_extra_startups:description: List of extra startup scripts
 keycloak_extra_startups: []
+
+# @var keycloak_legacy_startups:description: List of startup scripts befor 20.0.0
+keycloak_legacy_startups:
+  - name: keycloak
+    template: keycloak.j2
+
+# @var keycloak_container_themes_path:description: Path for themes within the container
+keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
+
+# @var keycloak_container_extensions_path:description: Path for providers within the container
+keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
+
+# @var keycloak_container_scripts_path:description: Path for startup scripts within the container
+keycloak_container_scripts_path: /opt/jboss/startup-scripts
+
 
 ...

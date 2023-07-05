@@ -23,17 +23,19 @@ ExecStart=/usr/bin/docker run --rm \
   --network {{ keycloak_network }} \
 {% endif %}
 {% for item in keycloak_default_themes + keycloak_extra_themes %}
-  --volume {{ keycloak_themes_path }}/{{ item.name }}:/opt/jboss/keycloak/themes/{{ item.name }} \
+  --volume {{ keycloak_themes_path }}/{{ item.name }}:{{ keycloak_container_themes_path }}/{{ item.name }} \
 {% endfor %}
-  --volume {{ keycloak_extensions_path }}:/opt/jboss/keycloak/providers \
-  --volume {{ keycloak_startups_path }}:/opt/jboss/startup-scripts \
+  --volume {{ keycloak_extensions_path }}:{{ keycloak_container_extensions_path }} \
+{% if keycloak_version is version('20.0.0', '<') %}
+  --volume {{ keycloak_startups_path }}:{{ keycloak_container_scripts_path }} \
+{% endif %}
 {% for item in keycloak_default_volumes + keycloak_extra_volumes %}
   --volume {{ item }} \
 {% endfor %}
 {% for item in keycloak_default_publish + keycloak_extra_publish %}
   --publish {{ item }} \
 {% endfor %}
-  {{ keycloak_image }}
+  {{ keycloak_image }} {{ keycloak_command | default('') }}
 
 [Install]
 WantedBy=multi-user.target

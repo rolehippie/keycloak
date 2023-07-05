@@ -15,7 +15,7 @@
     name: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     password: "!"
-    shell: /usr/sbin/nologin
+    shell: "{{ keycloak_shell }}"
     create_home: False
     system: True
     state: present
@@ -118,11 +118,11 @@
 - name: Create startups directory
   file:
     path: "{{ keycloak_startups_path }}"
-    recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: u=rwX,g=rX,o=rX
-    state: directory
+    recurse: "{{ True if keycloak_version is version('20.0.0', '<') else False }}"
+    state: "{{ 'directory' if keycloak_version is version('20.0.0', '<') else 'absent' }}"
   tags:
     - keycloak
 
@@ -132,7 +132,10 @@
   loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.url | default(False) and item.state | default("present") == "present"
+  when:
+    - keycloak_version is version('20.0.0', '<')
+    - item.url | default(False)
+    - item.state | default("present") == "present"
   get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
@@ -148,7 +151,10 @@
   loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.content | default(False) and item.state | default("present") == "present"
+  when:
+    - keycloak_version is version('20.0.0', '<')
+    - item.content | default(False)
+    - item.state | default("present") == "present"
   copy:
     content: "{{ item.content }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
@@ -164,7 +170,10 @@
   loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.src | default(False) and item.state | default("present") == "present"
+  when:
+    - keycloak_version is version('20.0.0', '<')
+    - item.src | default(False)
+    - item.state | default("present") == "present"
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
@@ -180,7 +189,10 @@
   loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.template | default(False) and item.state | default("present") == "present"
+  when:
+    - keycloak_version is version('20.0.0', '<')
+    - item.template | default(False)
+    - item.state | default("present") == "present"
   template:
     src: "{{ item.template }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
@@ -196,7 +208,9 @@
   loop: "{{ keycloak_default_startups + keycloak_extra_startups }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.state | default("present") == "absent"
+  when:
+    - keycloak_version is version('20.0.0', '<')
+    - item.state | default("present") == "absent"
   file:
     path: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     state: absent
