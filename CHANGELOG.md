@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0](https://github.com/rolehippie/keycloak/compare/v1.0.0...v2.0.0) (2023-07-05)
+
+
+### Features
+
+* add support for >=20.0.0, update to latest version ([1a12ee2](https://github.com/rolehippie/keycloak/commit/1a12ee223a7c993beeaef3fc728d53e1136b25b5))
+
 ## 1.0.0 (2023-01-05)
 
 
