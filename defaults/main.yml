@@ -245,5 +245,4 @@ keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_ve
 # @var keycloak_container_scripts_path:description: Path for startup scripts within the container
 keycloak_container_scripts_path: /opt/jboss/startup-scripts
 
-
 ...
