@@ -38,6 +38,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_default_themes](#keycloak_default_themes)
   - [keycloak_default_volumes](#keycloak_default_volumes)
   - [keycloak_extensions_path](#keycloak_extensions_path)
+  - [keycloak_extra_environment](#keycloak_extra_environment)
   - [keycloak_extra_extensions](#keycloak_extra_extensions)
   - [keycloak_extra_folders](#keycloak_extra_folders)
   - [keycloak_extra_labels](#keycloak_extra_labels)
@@ -45,6 +46,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_extra_startups](#keycloak_extra_startups)
   - [keycloak_extra_themes](#keycloak_extra_themes)
   - [keycloak_extra_volumes](#keycloak_extra_volumes)
+  - [keycloak_general_environment](#keycloak_general_environment)
   - [keycloak_group](#keycloak_group)
   - [keycloak_hostname](#keycloak_hostname)
   - [keycloak_http_relative_path](#keycloak_http_relative_path)
@@ -352,6 +354,28 @@ Path to store extensions
 keycloak_extensions_path: /usr/share/keycloak/extensions
 ```
 
+### keycloak_extra_environment
+
+List of extra environment variables
+
+#### Default value
+
+```YAML
+keycloak_extra_environment: []
+```
+
+#### Example usage
+
+```YAML
+keycloak_extra_environment:
+  - name: EXAMPLE1
+    value: dummy1
+  - name: EXAMPLE2
+    value: dummy2
+  - name: EXAMPLE3
+    value: dummy3
+```
+
 ### keycloak_extra_extensions
 
 List of extra extensions
@@ -466,6 +490,28 @@ keycloak_extra_volumes:
   - /path/to/host/folder1:/path/within/container1
   - /path/to/host/folder2:/path/within/container2
   - /path/to/host/folder3:/path/within/container3
+```
+
+### keycloak_general_environment
+
+List of general environment variables
+
+#### Default value
+
+```YAML
+keycloak_general_environment: []
+```
+
+#### Example usage
+
+```YAML
+keycloak_general_environment:
+  - key: EXAMPLE1
+    value: dummy1
+  - key: EXAMPLE2
+    value: dummy2
+  - key: EXAMPLE3
+    value: dummy3
 ```
 
 ### keycloak_group

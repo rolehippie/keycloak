@@ -245,4 +245,28 @@ keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_ve
 # @var keycloak_container_scripts_path:description: Path for startup scripts within the container
 keycloak_container_scripts_path: /opt/jboss/startup-scripts
 
+# @var keycloak_general_environment:description: List of general environment variables
+# @var keycloak_general_environment:example: >
+# keycloak_general_environment:
+#   - key: EXAMPLE1
+#     value: dummy1
+#   - key: EXAMPLE2
+#     value: dummy2
+#   - key: EXAMPLE3
+#     value: dummy3
+# @end
+keycloak_general_environment: []
+
+# @var keycloak_extra_environment:description: List of extra environment variables
+# @var keycloak_extra_environment:example: >
+# keycloak_extra_environment:
+#   - name: EXAMPLE1
+#     value: dummy1
+#   - name: EXAMPLE2
+#     value: dummy2
+#   - name: EXAMPLE3
+#     value: dummy3
+# @end
+keycloak_extra_environment: []
+
 ...

@@ -56,3 +56,9 @@ JGROUPS_DISCOVERY_PROTOCOL={{ keycloak_jgroups_discovery_protocol }}
 JGROUPS_DISCOVERY_PROPERTIES={{ keycloak_jgroups_discovery_properties }}
 {% endif %}
 {% endif %}
+{% if (keycloak_general_environment + keycloak_extra_environment) | length > 0 %}
+
+{% for env in keycloak_general_environment + keycloak_extra_environment %}
+{{ env.name }}={{ env.value }}
+{% endfor %}
+{% endif %}
