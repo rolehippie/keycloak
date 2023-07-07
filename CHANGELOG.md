@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/rolehippie/keycloak/compare/v2.0.0...v2.1.0) (2023-07-07)
+
+
+### Features
+
+* add defaults to inject additional env variables ([1adf446](https://github.com/rolehippie/keycloak/commit/1adf44668263ccd2119015e95c2013ae2fc3cd39))
+
 ## [2.0.0](https://github.com/rolehippie/keycloak/compare/v1.0.0...v2.0.0) (2023-07-05)
 
 
