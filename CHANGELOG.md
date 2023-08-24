@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/rolehippie/keycloak/compare/v2.1.0...v2.2.0) (2023-08-24)
+
+
+### Features
+
+* add optional defaults for cpu and memory limit ([f253522](https://github.com/rolehippie/keycloak/commit/f2535227887559912e647e46d23f08a15e00137a))
+
 ## [2.1.0](https://github.com/rolehippie/keycloak/compare/v2.0.0...v2.1.0) (2023-07-07)
 
 
