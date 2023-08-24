@@ -19,6 +19,21 @@ ExecStart=/usr/bin/docker run --rm \
   --label {{ item }} \
 {% endfor %}
   --env-file /etc/default/keycloak \
+{% if keycloak_memory_limit | default(False) %}
+  --memory {{ keycloak_memory_limit }} \
+{% endif %}
+{% if keycloak_memory_swap | default(False) %}
+  --memory-swap {{ keycloak_memory_swap }} \
+{% endif %}
+{% if keycloak_memory_soft_limit | default(False) %}
+  --memory-reservation {{ keycloak_memory_soft_limit }} \
+{% endif %}
+{% if keycloak_cpu_shares | default(False) %}
+  --cpu-shares {{ keycloak_cpu_shares }} \
+{% endif %}
+{% if keycloak_number_of_cpus | default(False) %}
+  --cpus {{ keycloak_number_of_cpus }} \
+{% endif %}
 {% if keycloak_network | default(False) %}
   --network {{ keycloak_network }} \
 {% endif %}

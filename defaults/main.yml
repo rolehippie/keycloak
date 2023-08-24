@@ -58,6 +58,26 @@ keycloak_default_volumes: []
 # @end
 keycloak_extra_volumes: []
 
+# @var keycloak_memory_limit:description: Memory limit with Docker deployment
+# @var keycloak_memory_limit:example: $ "1024m"
+keycloak_memory_limit:
+
+# @var keycloak_memory_swap:description: Swap usage with Docker deployment
+# @var keycloak_memory_swap:example: $ "2048m"
+keycloak_memory_swap:
+
+# @var keycloak_memory_soft_limit:description: Soft memory limit with Docker deployment
+# @var keycloak_memory_soft_limit:example: $ "512m"
+keycloak_memory_soft_limit:
+
+# @var keycloak_cpu_shares:description: CPU shares with Docker deployment
+# @var keycloak_cpu_shares:example: $ "512"
+keycloak_cpu_shares:
+
+# @var keycloak_number_of_cpus:description: Number of CPUs with Docker deployment
+# @var keycloak_number_of_cpus:example: $ "1.0"
+keycloak_number_of_cpus:
+
 # @var keycloak_user:description: User to create for container usage
 keycloak_user: keycloak
 

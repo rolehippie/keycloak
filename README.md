@@ -2,7 +2,7 @@
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/keycloak)
 [![General Workflow](https://github.com/rolehippie/keycloak/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/general.yml)
-[![Readme Workflow](https://github.com/rolehippie/keycloak/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/readme.yml)
+[![Readme Workflow](https://github.com/rolehippie/keycloak/actions/workflows/docs.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/docs.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/keycloak/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/galaxy.yml)
 [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/keycloak)](https://github.com/rolehippie/keycloak/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/role-rolehippie.keycloak-blue)](https://galaxy.ansible.com/rolehippie/keycloak)
@@ -23,6 +23,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_container_extensions_path](#keycloak_container_extensions_path)
   - [keycloak_container_scripts_path](#keycloak_container_scripts_path)
   - [keycloak_container_themes_path](#keycloak_container_themes_path)
+  - [keycloak_cpu_shares](#keycloak_cpu_shares)
   - [keycloak_database_addresses](#keycloak_database_addresses)
   - [keycloak_database_connection](#keycloak_database_connection)
   - [keycloak_database_name](#keycloak_database_name)
@@ -57,7 +58,11 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_jgroups_discovery_protocol](#keycloak_jgroups_discovery_protocol)
   - [keycloak_legacy_startups](#keycloak_legacy_startups)
   - [keycloak_loglevel](#keycloak_loglevel)
+  - [keycloak_memory_limit](#keycloak_memory_limit)
+  - [keycloak_memory_soft_limit](#keycloak_memory_soft_limit)
+  - [keycloak_memory_swap](#keycloak_memory_swap)
   - [keycloak_network](#keycloak_network)
+  - [keycloak_number_of_cpus](#keycloak_number_of_cpus)
   - [keycloak_password](#keycloak_password)
   - [keycloak_proxy_address_forwarding](#keycloak_proxy_address_forwarding)
   - [keycloak_pull_image](#keycloak_pull_image)
@@ -143,6 +148,22 @@ Path for themes within the container
 ```YAML
 keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is\
   \ version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
+```
+
+### keycloak_cpu_shares
+
+CPU shares with Docker deployment
+
+#### Default value
+
+```YAML
+keycloak_cpu_shares:
+```
+
+#### Example usage
+
+```YAML
+keycloak_cpu_shares: '512'
 ```
 
 ### keycloak_database_addresses
@@ -616,6 +637,54 @@ Logging level for the instance
 keycloak_loglevel: INFO
 ```
 
+### keycloak_memory_limit
+
+Memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+keycloak_memory_limit:
+```
+
+#### Example usage
+
+```YAML
+keycloak_memory_limit: 1024m
+```
+
+### keycloak_memory_soft_limit
+
+Soft memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+keycloak_memory_soft_limit:
+```
+
+#### Example usage
+
+```YAML
+keycloak_memory_soft_limit: 512m
+```
+
+### keycloak_memory_swap
+
+Swap usage with Docker deployment
+
+#### Default value
+
+```YAML
+keycloak_memory_swap:
+```
+
+#### Example usage
+
+```YAML
+keycloak_memory_swap: 2048m
+```
+
 ### keycloak_network
 
 Optionally assign this Docker network to container
@@ -624,6 +693,22 @@ Optionally assign this Docker network to container
 
 ```YAML
 keycloak_network:
+```
+
+### keycloak_number_of_cpus
+
+Number of CPUs with Docker deployment
+
+#### Default value
+
+```YAML
+keycloak_number_of_cpus:
+```
+
+#### Example usage
+
+```YAML
+keycloak_number_of_cpus: '1.0'
 ```
 
 ### keycloak_password
