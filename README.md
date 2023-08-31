@@ -1,6 +1,6 @@
 # keycloak
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/keycloak)
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/keycloak)
 [![General Workflow](https://github.com/rolehippie/keycloak/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/general.yml)
 [![Readme Workflow](https://github.com/rolehippie/keycloak/actions/workflows/docs.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/docs.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/keycloak/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/galaxy.yml)
@@ -84,7 +84,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - Minimum Ansible version: `2.10`
 
-
 ## Default Variables
 
 ### keycloak_cache_owners_auth_sessions_count
@@ -114,8 +113,8 @@ Command to pass to Keycloak container
 #### Default value
 
 ```YAML
-keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else\
-  \ '' }}"
+keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else
+  '' }}"
 ```
 
 ### keycloak_container_extensions_path
@@ -125,8 +124,8 @@ Path for providers within the container
 #### Default value
 
 ```YAML
-keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version\
-  \ is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
+keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version
+  is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
 ```
 
 ### keycloak_container_scripts_path
@@ -146,8 +145,8 @@ Path for themes within the container
 #### Default value
 
 ```YAML
-keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is\
-  \ version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
+keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is
+  version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
 ```
 
 ### keycloak_cpu_shares
@@ -254,7 +253,8 @@ List of default extensions
 ```YAML
 keycloak_default_extensions:
   - name: keycloak-metrics-spi
-    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
+    url: 
+      https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
 ```
 
 #### Example usage
@@ -311,8 +311,8 @@ List of default startup scripts
 #### Default value
 
 ```YAML
-keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else\
-  \ keycloak_legacy_startups }}"
+keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else
+  keycloak_legacy_startups }}"
 ```
 
 #### Example usage
