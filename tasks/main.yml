@@ -1,4 +1,3 @@
-# Standards: 1.2
 ---
 - name: Create defined group
   register: keycloak_group_result
