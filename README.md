@@ -845,6 +845,7 @@ keycloak_version: 21.1.2
 ## Dependencies
 
 - [rolehippie.docker](https://github.com/rolehippie/docker)
+- [community.docker](https://github.com/ansible-collections/community.docker)
 
 ## License
 
