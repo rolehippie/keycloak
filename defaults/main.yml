@@ -221,7 +221,7 @@ keycloak_extra_extensions: []
 #   - name: example-from-file
 #     src: path/to/file.j2
 #   - name: example-from-template
-#     template: path/to/template.j2
+#     ansible.builtin.template: path/to/template.j2
 #   - name: example-to-remove
 #     state: absent
 # @end
@@ -241,7 +241,7 @@ keycloak_startups_path: /usr/share/keycloak/startups
 #   - name: example-from-file
 #     src: path/to/file.j2
 #   - name: example-from-template
-#     template: path/to/template.j2
+#     ansible.builtin.template: path/to/template.j2
 #   - name: example-to-remove
 #     state: absent
 # @end
@@ -253,7 +253,7 @@ keycloak_extra_startups: []
 # @var keycloak_legacy_startups:description: List of startup scripts befor 20.0.0
 keycloak_legacy_startups:
   - name: keycloak
-    template: keycloak.j2
+    ansible.builtin.template: keycloak.j2
 
 # @var keycloak_container_themes_path:description: Path for themes within the container
 keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"

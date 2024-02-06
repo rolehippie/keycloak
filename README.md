@@ -330,7 +330,7 @@ keycloak_default_startups:
   - name: example-from-file
     src: path/to/file.j2
   - name: example-from-template
-    template: path/to/template.j2
+    ansible.builtin.template: path/to/template.j2
   - name: example-to-remove
     state: absent
 ```
@@ -624,7 +624,7 @@ List of startup scripts befor 20.0.0
 ```YAML
 keycloak_legacy_startups:
   - name: keycloak
-    template: keycloak.j2
+    ansible.builtin.template: keycloak.j2
 ```
 
 ### keycloak_loglevel
@@ -776,7 +776,7 @@ keycloak_startups_path:
   - name: example-from-file
     src: path/to/file.j2
   - name: example-from-template
-    template: path/to/template.j2
+    ansible.builtin.template: path/to/template.j2
   - name: example-to-remove
     state: absent
 ```
