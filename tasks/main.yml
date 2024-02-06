@@ -1,8 +1,7 @@
-# Standards: 1.2
 ---
 - name: Create defined group
   register: keycloak_group_result
-  group:
+  ansible.builtin.group:
     name: "{{ keycloak_group }}"
     system: True
     state: present
@@ -11,7 +10,7 @@
 
 - name: Create defined user
   register: keycloak_user_result
-  user:
+  ansible.builtin.user:
     name: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     password: "!"
@@ -24,7 +23,7 @@
 
 - name: Create required directories
   loop: "{{ keycloak_default_folders + keycloak_extra_folders }}"
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     recurse: True
     owner: "{{ keycloak_user }}"
@@ -35,7 +34,7 @@
     - keycloak
 
 - name: Create themes directory
-  file:
+  ansible.builtin.file:
     path: "{{ keycloak_themes_path }}"
     recurse: True
     owner: "{{ keycloak_user }}"
@@ -52,7 +51,7 @@
   loop_control:
     label: "{{ item.name }}"
   when: item.url | default(False) and item.state | default("present") == "present"
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_themes_path) }}/{{ item.name }}"
     remote_src: True
@@ -69,14 +68,14 @@
   loop_control:
     label: "{{ item.name }}"
   when: item.state | default("present") == "absent"
-  file:
+  ansible.builtin.file:
     path: "{{ item.path | default(keycloak_themes_path) }}/{{ item.name }}"
     state: absent
   tags:
     - keycloak
 
 - name: Create extensions directory
-  file:
+  ansible.builtin.file:
     path: "{{ keycloak_extensions_path }}"
     recurse: True
     owner: "{{ keycloak_user }}"
@@ -93,7 +92,7 @@
   loop_control:
     label: "{{ item.name }}"
   when: item.url | default(False) and item.state | default("present") == "present"
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
     owner: "{{ keycloak_user }}"
@@ -109,14 +108,14 @@
   loop_control:
     label: "{{ item.name }}"
   when: item.state | default("present") == "absent"
-  file:
+  ansible.builtin.file:
     path: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
     state: absent
   tags:
     - keycloak
 
 - name: Create startups directory
-  file:
+  ansible.builtin.file:
     path: "{{ keycloak_startups_path }}"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
@@ -136,7 +135,7 @@
     - keycloak_version is version('20.0.0', '<')
     - item.url | default(False)
     - item.state | default("present") == "present"
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
@@ -155,7 +154,7 @@
     - keycloak_version is version('20.0.0', '<')
     - item.content | default(False)
     - item.state | default("present") == "present"
-  copy:
+  ansible.builtin.copy:
     content: "{{ item.content }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
@@ -174,7 +173,7 @@
     - keycloak_version is version('20.0.0', '<')
     - item.src | default(False)
     - item.state | default("present") == "present"
-  copy:
+  ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
@@ -193,7 +192,7 @@
     - keycloak_version is version('20.0.0', '<')
     - item.template | default(False)
     - item.state | default("present") == "present"
-  template:
+  ansible.builtin.template:
     src: "{{ item.template }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     owner: "{{ keycloak_user }}"
@@ -211,7 +210,7 @@
   when:
     - keycloak_version is version('20.0.0', '<')
     - item.state | default("present") == "absent"
-  file:
+  ansible.builtin.file:
     path: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
     state: absent
   tags:
@@ -220,7 +219,7 @@
 - name: Write default config
   notify:
     - Restart keycloak
-  template:
+  ansible.builtin.template:
     src: default.j2
     dest: /etc/default/keycloak
     owner: root
@@ -232,7 +231,7 @@
 - name: Write service file
   notify:
     - Restart keycloak
-  template:
+  ansible.builtin.template:
     src: service.j2
     dest: /etc/systemd/system/keycloak.service
     owner: root
@@ -243,14 +242,14 @@
 
 - name: Pull docker image
   when: keycloak_pull_image
-  docker_image:
+  community.docker.docker_image:
     name: "{{ keycloak_image }}"
     source: pull
   tags:
     - keycloak
 
 - name: Start keycloak service
-  systemd:
+  ansible.builtin.systemd:
     name: keycloak
     state: started
     daemon_reload: True
