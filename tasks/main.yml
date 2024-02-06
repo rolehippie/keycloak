@@ -14,7 +14,7 @@
     name: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     password: "!"
-    ansible.builtin.shell: "{{ keycloak_shell }}"
+    shell: "{{ keycloak_shell }}"
     create_home: False
     system: True
     state: present
