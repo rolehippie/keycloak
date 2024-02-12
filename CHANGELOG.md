@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.0.0](https://github.com/rolehippie/keycloak/compare/v2.2.0...v3.0.0) (2024-02-12)
+
+
+### Features
+
+* drop support for ubuntu 18.04 ([15f27d1](https://github.com/rolehippie/keycloak/commit/15f27d1e8e2da696f6203a11722e127004888c8f))
+* used full qualified collection names ([dd39494](https://github.com/rolehippie/keycloak/commit/dd39494500171f500c1c67d70c7fca9198a9df2d))
+
+
+### Bugfixes
+
+* remove meta requirements and document used collections ([45b3758](https://github.com/rolehippie/keycloak/commit/45b37588e3d828d453cfd55aeb31bb8fbdaf915c))
+* use right attribute for user shell ([42e003f](https://github.com/rolehippie/keycloak/commit/42e003fba2b394c8ee8f1f225d19115ee93fbe01))
+
 ## [2.2.0](https://github.com/rolehippie/keycloak/compare/v2.1.0...v2.2.0) (2023-08-24)
 
 
