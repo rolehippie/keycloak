@@ -1,7 +1,7 @@
 ---
 # @var keycloak_version:description: Version of keycloak to use
-# renovate: datasource=github-releases depName=keycloak/keycloak
-keycloak_version: 21.1.2
+# renovate: datasource=docker depName=quay.io/keycloak/keycloak
+keycloak_version: 24.0.5
 
 # @var keycloak_image:description: Docker image to use for deployment
 keycloak_image: "quay.io/keycloak/keycloak:{{ keycloak_version }}"
@@ -182,6 +182,10 @@ keycloak_default_themes: []
 # @end
 keycloak_extra_themes: []
 
+# @var keycloak_metrics_extension_version:description: Version of the metrics extension to install
+# renovate: datasource=github-releases depName=aerogear/keycloak-metrics-spi
+keycloak_metrics_extension_version: 5.0.0
+
 # @var keycloak_extensions_path:description: Path to store extensions
 keycloak_extensions_path: /usr/share/keycloak/extensions
 
@@ -194,8 +198,10 @@ keycloak_extensions_path: /usr/share/keycloak/extensions
 #     state: absent
 # @end
 keycloak_default_extensions:
-  - name: keycloak-metrics-spi
-    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
+  - name: keycloak-metrics-spi.jar
+    state: absent
+  - name: "keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar"
+    url: "https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ keycloak_metrics_extension_version }}/keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar"
 
 # @var keycloak_extra_extensions:description: List of extra extensions
 # @var keycloak_extra_extensions:example: >
