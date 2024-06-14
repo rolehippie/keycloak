@@ -61,6 +61,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [keycloak_memory_limit](#keycloak_memory_limit)
   - [keycloak_memory_soft_limit](#keycloak_memory_soft_limit)
   - [keycloak_memory_swap](#keycloak_memory_swap)
+  - [keycloak_metrics_extension_version](#keycloak_metrics_extension_version)
   - [keycloak_network](#keycloak_network)
   - [keycloak_number_of_cpus](#keycloak_number_of_cpus)
   - [keycloak_password](#keycloak_password)
@@ -252,9 +253,11 @@ List of default extensions
 
 ```YAML
 keycloak_default_extensions:
-  - name: keycloak-metrics-spi
-    url: 
-      https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
+  - name: keycloak-metrics-spi.jar
+    state: absent
+  - name: keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
+    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ keycloak_metrics_extension_version
+      }}/keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
 ```
 
 #### Example usage
@@ -685,6 +688,16 @@ keycloak_memory_swap:
 keycloak_memory_swap: 2048m
 ```
 
+### keycloak_metrics_extension_version
+
+Version of the metrics extension to install
+
+#### Default value
+
+```YAML
+keycloak_metrics_extension_version: 5.0.0
+```
+
 ### keycloak_network
 
 Optionally assign this Docker network to container
@@ -834,7 +847,7 @@ Version of keycloak to use
 #### Default value
 
 ```YAML
-keycloak_version: 21.1.2
+keycloak_version: 24.0.5
 ```
 
 ## Discovered Tags
