@@ -95,6 +95,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
+    checksum: "{{ item.checksum | default(omit) }}"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: o=rwx,g=rx,o=rx
@@ -138,6 +139,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_startups_path) }}/{{ item.name }}.cli"
+    checksum: "{{ item.checksum | default(omit) }}"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: o=rwx,g=rx,o=rx
