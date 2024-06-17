@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.0.0](https://github.com/rolehippie/keycloak/compare/v3.0.0...v4.0.0) (2024-06-17)
+
+
+### Features
+
+* add optional checksum for extension and startup downloads ([56ca31f](https://github.com/rolehippie/keycloak/commit/56ca31f4ed1bdb75df6d3c406da4c6573f5ffed5))
+* **deps:** update quay.io/keycloak/keycloak docker tag to v25 ([ff66a8a](https://github.com/rolehippie/keycloak/commit/ff66a8ae0d15e6fd52dfb43661f983db3ec92ab1))
+* upgrade keycloak and metrics extension, drop old metrics extension ([a6a1491](https://github.com/rolehippie/keycloak/commit/a6a1491319525df8dc6c0ffe2255acfce0f921f8))
+
 ## [3.0.0](https://github.com/rolehippie/keycloak/compare/v2.2.0...v3.0.0) (2024-02-12)
 
 
