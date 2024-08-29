@@ -34,7 +34,8 @@ keycloak_default_labels: []
 keycloak_extra_labels: []
 
 # @var keycloak_default_folders:description: List of default folders to create
-keycloak_default_folders: []
+keycloak_default_folders:
+  - /usr/share/keycloak
 
 # @var keycloak_extra_folders:description: List of extra folders to create
 # @var keycloak_extra_folders:example: >
