@@ -25,10 +25,9 @@
   loop: "{{ keycloak_default_folders + keycloak_extra_folders }}"
   ansible.builtin.file:
     path: "{{ item }}"
-    recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwX,g=rX,o=rX
+    mode: u=rwx,g=rx,o=rx
     state: directory
   tags:
     - keycloak
@@ -77,10 +76,9 @@
 - name: Create extensions directory
   ansible.builtin.file:
     path: "{{ keycloak_extensions_path }}"
-    recurse: True
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    mode: u=rwX,g=rX,o=rX
+    mode: u=rwx,g=rx,o=rx
     state: directory
   tags:
     - keycloak
