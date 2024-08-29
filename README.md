@@ -277,7 +277,8 @@ List of default folders to create
 #### Default value
 
 ```YAML
-keycloak_default_folders: []
+keycloak_default_folders:
+  - /usr/share/keycloak
 ```
 
 ### keycloak_default_labels
@@ -847,7 +848,7 @@ Version of keycloak to use
 #### Default value
 
 ```YAML
-keycloak_version: 25.0.2
+keycloak_version: 25.0.4
 ```
 
 ## Discovered Tags
