@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.1.0](https://github.com/rolehippie/keycloak/compare/v4.0.2...v4.1.0) (2024-09-02)
+
+
+### Features
+
+* do not create recursive paths anymore ([1c6f695](https://github.com/rolehippie/keycloak/commit/1c6f6951117ba2c2c80f40e2e6bd3b56ea46f7cb))
+
+
+### Bugfixes
+
+* **deps:** update quay.io/keycloak/keycloak docker tag to v25.0.4 ([3d6b0ab](https://github.com/rolehippie/keycloak/commit/3d6b0ab693ef7ac8ad29acc89d3fc8f1f259f4cd))
+
 ## [4.0.2](https://github.com/rolehippie/keycloak/compare/v4.0.1...v4.0.2) (2024-07-22)
 
 
