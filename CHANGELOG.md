@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.1](https://github.com/rolehippie/keycloak/compare/v5.2.0...v5.2.1) (2025-04-28)
+
+
+### Bugfixes
+
+* **deps:** update quay.io/keycloak/keycloak docker tag to v26.2.1 ([#41](https://github.com/rolehippie/keycloak/issues/41)) ([fab605c](https://github.com/rolehippie/keycloak/commit/fab605c1e9b3ac22b4033f921de8a2c4efeedc9a))
+
 ## [5.2.0](https://github.com/rolehippie/keycloak/compare/v5.1.4...v5.2.0) (2025-04-14)
 
 
