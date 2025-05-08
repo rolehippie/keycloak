@@ -848,7 +848,7 @@ Version of keycloak to use
 #### Default value
 
 ```YAML
-keycloak_version: 26.2.3
+keycloak_version: 26.2.4
 ```
 
 ## Discovered Tags
