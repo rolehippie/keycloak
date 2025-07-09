@@ -1,4 +1,4 @@
-# keycloak
+# workspace
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/keycloak)
 [![General Workflow](https://github.com/rolehippie/keycloak/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/keycloak/actions/workflows/general.yml)
@@ -256,8 +256,9 @@ keycloak_default_extensions:
   - name: keycloak-metrics-spi.jar
     state: absent
   - name: keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
-    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ keycloak_metrics_extension_version
-      }}/keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
+    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ 
+      keycloak_metrics_extension_version }}/keycloak-metrics-spi-{{ 
+      keycloak_metrics_extension_version }}.jar
 ```
 
 #### Example usage
@@ -848,13 +849,12 @@ Version of keycloak to use
 #### Default value
 
 ```YAML
-keycloak_version: 26.3.0
+keycloak_version: 26.3.1
 ```
 
 ## Discovered Tags
 
 **_keycloak_**
-
 
 ## Dependencies
 
