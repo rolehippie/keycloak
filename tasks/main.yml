@@ -3,7 +3,7 @@
   register: keycloak_group_result
   ansible.builtin.group:
     name: "{{ keycloak_group }}"
-    system: True
+    system: true
     state: present
   tags:
     - keycloak
@@ -15,8 +15,8 @@
     group: "{{ keycloak_group }}"
     password: "!"
     shell: "{{ keycloak_shell }}"
-    create_home: False
-    system: True
+    create_home: false
+    system: true
     state: present
   tags:
     - keycloak
@@ -35,7 +35,7 @@
 - name: Create themes directory
   ansible.builtin.file:
     path: "{{ keycloak_themes_path }}"
-    recurse: True
+    recurse: true
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: u=rwX,g=rX,o=rX
@@ -49,11 +49,11 @@
   loop: "{{ keycloak_default_themes + keycloak_extra_themes }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.url | default(False) and item.state | default("present") == "present"
+  when: item.url | default(false) and item.state | default("present") == "present"
   ansible.builtin.unarchive:
     src: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_themes_path) }}/{{ item.name }}"
-    remote_src: True
+    remote_src: true
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: o=rwx,g=rx,o=rx
@@ -89,7 +89,7 @@
   loop: "{{ keycloak_default_extensions + keycloak_extra_extensions }}"
   loop_control:
     label: "{{ item.name }}"
-  when: item.url | default(False) and item.state | default("present") == "present"
+  when: item.url | default(false) and item.state | default("present") == "present"
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.path | default(keycloak_extensions_path) }}/{{ item.name }}.jar"
@@ -119,7 +119,7 @@
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     mode: u=rwX,g=rX,o=rX
-    recurse: "{{ True if keycloak_version is version('20.0.0', '<') else False }}"
+    recurse: "{{ true if keycloak_version is version('20.0.0', '<') else false }}"
     state: "{{ 'directory' if keycloak_version is version('20.0.0', '<') else 'absent' }}"
   tags:
     - keycloak
@@ -132,7 +132,7 @@
     label: "{{ item.name }}"
   when:
     - keycloak_version is version('20.0.0', '<')
-    - item.url | default(False)
+    - item.url | default(false)
     - item.state | default("present") == "present"
   ansible.builtin.get_url:
     url: "{{ item.url }}"
@@ -152,7 +152,7 @@
     label: "{{ item.name }}"
   when:
     - keycloak_version is version('20.0.0', '<')
-    - item.content | default(False)
+    - item.content | default(false)
     - item.state | default("present") == "present"
   ansible.builtin.copy:
     content: "{{ item.content }}"
@@ -171,7 +171,7 @@
     label: "{{ item.name }}"
   when:
     - keycloak_version is version('20.0.0', '<')
-    - item.src | default(False)
+    - item.src | default(false)
     - item.state | default("present") == "present"
   ansible.builtin.copy:
     src: "{{ item.src }}"
@@ -190,7 +190,7 @@
     label: "{{ item.name }}"
   when:
     - keycloak_version is version('20.0.0', '<')
-    - item.template | default(False)
+    - item.template | default(false)
     - item.state | default("present") == "present"
   ansible.builtin.template:
     src: "{{ item.template }}"
@@ -252,9 +252,9 @@
   ansible.builtin.systemd:
     name: keycloak
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - keycloak
 

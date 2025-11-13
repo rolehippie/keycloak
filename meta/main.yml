@@ -30,6 +30,7 @@ galaxy_info:
       versions:
         - focal
         - jammy
+        - noble
   galaxy_tags:
     - identity
     - idp
@@ -37,5 +38,8 @@ galaxy_info:
     - oidc
 
 dependencies: []
+
+collections:
+  - community.docker
 
 ...

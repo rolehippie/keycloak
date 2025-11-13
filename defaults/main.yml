@@ -7,7 +7,7 @@ keycloak_version: 26.4.2
 keycloak_image: "quay.io/keycloak/keycloak:{{ keycloak_version }}"
 
 # @var keycloak_pull_image:description: Pull image as part of the tasks
-keycloak_pull_image: True
+keycloak_pull_image: true
 
 # @var keycloak_network:description: Optionally assign this Docker network to container
 keycloak_network:
@@ -110,7 +110,7 @@ keycloak_password:
 keycloak_loglevel: INFO
 
 # @var keycloak_proxy_address_forwarding:description: Enable proxy address forwarding
-keycloak_proxy_address_forwarding: True
+keycloak_proxy_address_forwarding: true
 
 # @var keycloak_database_type:description: Database driver
 keycloak_database_type: mariadb
@@ -146,7 +146,7 @@ keycloak_cache_owners_count: 1
 keycloak_cache_owners_auth_sessions_count: 1
 
 # @var keycloak_jgroups_discovery_enabled:description: Enable jgroups discovery
-keycloak_jgroups_discovery_enabled: False
+keycloak_jgroups_discovery_enabled: false
 
 # @var keycloak_jgroups_discovery_external_ip:description: External IP used for jgroups discovery
 # @var keycloak_url:example: $ "{{ ansible_address }}"

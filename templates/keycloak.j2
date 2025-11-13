@@ -9,7 +9,7 @@ echo Finished configuring node identifier
 
 echo Configuring mariadb cluster
 /subsystem=datasources/data-source=KeycloakDS: remove()
-/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mariadb:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(False) else '' }}//${env.DB_ADDR:mariadb}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=mariadb)
+/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mariadb:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(false) else '' }}//${env.DB_ADDR:mariadb}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=mariadb)
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value=${env.DB_USER:keycloak})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=password, value=${env.DB_PASSWORD:password})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=check-valid-connection-sql, value="SELECT 1")
@@ -22,7 +22,7 @@ echo Configuring mariadb cluster
 
 echo Configuring mysql cluster
 /subsystem=datasources/data-source=KeycloakDS: remove()
-/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mysql:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(False) else '' }}//${env.DB_ADDR:mysql}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=mysql)
+/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mysql:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(false) else '' }}//${env.DB_ADDR:mysql}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=mysql)
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value=${env.DB_USER:keycloak})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=password, value=${env.DB_PASSWORD:password})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=check-valid-connection-sql, value="SELECT 1")
@@ -35,7 +35,7 @@ echo Configuring mysql cluster
 
 echo Configuring postgres cluster
 /subsystem=datasources/data-source=KeycloakDS: remove()
-/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:postgresql:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(False) else '' }}//${env.DB_ADDR:postgres}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=postgresql)
+/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:postgresql:{{ keycloak_database_connection + ':' if keycloak_database_connection | default(false) else '' }}//${env.DB_ADDR:postgres}/${env.DB_DATABASE:keycloak}${env.JDBC_PARAMS:}, driver-name=postgresql)
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value=${env.DB_USER:keycloak})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=password, value=${env.DB_PASSWORD:password})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=check-valid-connection-sql, value="SELECT 1")
