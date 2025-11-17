@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.5.0](https://github.com/rolehippie/keycloak/compare/v5.4.1...v5.5.0) (2025-11-17)
+
+
+### Features
+
+* apply new repo structure and update linting ([e4fc60b](https://github.com/rolehippie/keycloak/commit/e4fc60b4fa6d1eeb19ada2d1668f882429f46081))
+
 ## [5.4.1](https://github.com/rolehippie/keycloak/compare/v5.4.0...v5.4.1) (2025-11-10)
 
 
