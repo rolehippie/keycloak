@@ -1,7 +1,7 @@
 ---
 # @var keycloak_version:description: Version of keycloak to use
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-keycloak_version: 26.5.1
+keycloak_version: 26.5.2
 
 # @var keycloak_image:description: Docker image to use for deployment
 keycloak_image: "quay.io/keycloak/keycloak:{{ keycloak_version }}"
