@@ -114,8 +114,7 @@ Command to pass to Keycloak container
 #### Default value
 
 ```YAML
-keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else
-  '' }}"
+keycloak_command: "{{ 'start-dev' if keycloak_version is version('20.0.0', '>=') else '' }}"
 ```
 
 ### keycloak_container_extensions_path
@@ -125,8 +124,7 @@ Path for providers within the container
 #### Default value
 
 ```YAML
-keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version
-  is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
+keycloak_container_extensions_path: "{{ '/opt/keycloak/providers' if keycloak_version is version('20.0.0', '>=') else '/opt/jboss/keycloak/providers' }}"
 ```
 
 ### keycloak_container_scripts_path
@@ -146,8 +144,7 @@ Path for themes within the container
 #### Default value
 
 ```YAML
-keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is
-  version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
+keycloak_container_themes_path: "{{ '/opt/keycloak/themes' if keycloak_version is version('20.0.0', '>=') else '/opt/jboss/keycloak/themes' }}"
 ```
 
 ### keycloak_cpu_shares
@@ -256,9 +253,7 @@ keycloak_default_extensions:
   - name: keycloak-metrics-spi.jar
     state: absent
   - name: keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
-    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ 
-      keycloak_metrics_extension_version }}/keycloak-metrics-spi-{{ 
-      keycloak_metrics_extension_version }}.jar
+    url: https://github.com/aerogear/keycloak-metrics-spi/releases/download/{{ keycloak_metrics_extension_version }}/keycloak-metrics-spi-{{ keycloak_metrics_extension_version }}.jar
 ```
 
 #### Example usage
@@ -316,8 +311,7 @@ List of default startup scripts
 #### Default value
 
 ```YAML
-keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else
-  keycloak_legacy_startups }}"
+keycloak_default_startups: "{{ [] if keycloak_version is version('20.0.0', '>=') else keycloak_legacy_startups }}"
 ```
 
 #### Example usage
