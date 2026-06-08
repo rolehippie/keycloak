@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.3.3](https://github.com/rolehippie/keycloak/compare/v6.3.2...v6.3.3) (2026-06-08)
+
+### Dependencies
+
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.6.3 ([#95](https://github.com/rolehippie/keycloak/issues/95)) ([5f77a78](https://github.com/rolehippie/keycloak/commit/5f77a78fff5a8e009fac7bc6a6f578abbd9ac75a))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([60379b6](https://github.com/rolehippie/keycloak/commit/60379b6cc25d13dd01de95399a295b87c31f870d))
+* **flake:** updated lockfile [skip ci] ([ee20060](https://github.com/rolehippie/keycloak/commit/ee20060a94b6d3ea17407a316ffd2c398f839b14))
+
 ## [6.3.2](https://github.com/rolehippie/keycloak/compare/v6.3.1...v6.3.2) (2026-05-25)
 
 ### Dependencies
