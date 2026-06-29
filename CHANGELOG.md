@@ -1,5 +1,7 @@
 # Changelog
 
+## [6.3.4](https://github.com/rolehippie/keycloak/compare/v6.3.3...v6.3.4) (2026-06-29)
+
 ## [6.3.3](https://github.com/rolehippie/keycloak/compare/v6.3.2...v6.3.3) (2026-06-08)
 
 ### Dependencies
