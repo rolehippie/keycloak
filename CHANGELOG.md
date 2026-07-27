@@ -1,5 +1,7 @@
 # Changelog
 
+## [6.5.0](https://github.com/rolehippie/keycloak/compare/v6.4.0...v6.5.0) (2026-07-27)
+
 ## [6.4.0](https://github.com/rolehippie/keycloak/compare/v6.3.4...v6.4.0) (2026-07-13)
 
 ## [6.3.4](https://github.com/rolehippie/keycloak/compare/v6.3.3...v6.3.4) (2026-06-29)
