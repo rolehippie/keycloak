@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.7.0](https://github.com/rolehippie/keycloak/compare/v6.6.0...v6.7.0) (2026-08-17)
+
+### Dependencies
+
+* **minor:** update dependency pipx:molecule to v26.8.0 ([#108](https://github.com/rolehippie/keycloak/issues/108)) ([9c4c290](https://github.com/rolehippie/keycloak/commit/9c4c290a76ad3c8221385889373dc14119234ada))
+* **patch:** update dependency pipx:ansible-core to v2.21.3 ([#105](https://github.com/rolehippie/keycloak/issues/105)) ([4c02693](https://github.com/rolehippie/keycloak/commit/4c0269318881256ff49191357ed6dff73ec500d4))
+* **patch:** update dependency pre-commit to v4.6.2 ([#106](https://github.com/rolehippie/keycloak/issues/106)) ([04327c0](https://github.com/rolehippie/keycloak/commit/04327c00805e3491a51711aefd2747ee7a9fa4cf))
+
 ## [6.6.0](https://github.com/rolehippie/keycloak/compare/v6.5.0...v6.6.0) (2026-08-10)
 
 ### Dependencies
