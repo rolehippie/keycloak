@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.8.0](https://github.com/rolehippie/keycloak/compare/v6.7.0...v6.8.0) (2026-08-24)
+
+### Dependencies
+
+* **minor:** update dependency pipx:ansible-lint to v26.8.0 ([#107](https://github.com/rolehippie/keycloak/issues/107)) ([7f60e29](https://github.com/rolehippie/keycloak/commit/7f60e295c9c226e00ee1aa48362465ac8a2266d9))
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.7.2 ([#109](https://github.com/rolehippie/keycloak/issues/109)) ([8299198](https://github.com/rolehippie/keycloak/commit/82991986192e141cdcfadb7cd75c4ee20b98be9b))
+
 ## [6.7.0](https://github.com/rolehippie/keycloak/compare/v6.6.0...v6.7.0) (2026-08-17)
 
 ### Dependencies
