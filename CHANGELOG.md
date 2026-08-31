@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.8.1](https://github.com/rolehippie/keycloak/compare/v6.8.0...v6.8.1) (2026-08-31)
+
+### Dependencies
+
+* **patch:** update dependency pipx:ansible-doctor to v8.4.1 ([#110](https://github.com/rolehippie/keycloak/issues/110)) ([2be24be](https://github.com/rolehippie/keycloak/commit/2be24be4522a9498b2dab40e5e022286d403578e))
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.7.3 ([#111](https://github.com/rolehippie/keycloak/issues/111)) ([b921743](https://github.com/rolehippie/keycloak/commit/b921743e32b3f51a0c35b21c060b44bc55048ae2))
+
 ## [6.8.0](https://github.com/rolehippie/keycloak/compare/v6.7.0...v6.8.0) (2026-08-24)
 
 ### Dependencies
