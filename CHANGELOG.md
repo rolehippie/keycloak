@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.9.0](https://github.com/rolehippie/keycloak/compare/v6.8.1...v6.9.0) (2026-09-07)
+
+### Features
+
+* add separate requirements for molecule run ([2497878](https://github.com/rolehippie/keycloak/commit/2497878e5618069060cafcf63aa419cde96f0631))
+* use new required facts as attributes ([498759c](https://github.com/rolehippie/keycloak/commit/498759ccaca48855d74f6bd159a85ca2c18bdfc4))
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.3.0,<5.4.0 ([#112](https://github.com/rolehippie/keycloak/issues/112)) ([8c46e4a](https://github.com/rolehippie/keycloak/commit/8c46e4abb6f9c49d527951675c71141a7ce197d2))
+
 ## [6.8.1](https://github.com/rolehippie/keycloak/compare/v6.8.0...v6.8.1) (2026-08-31)
 
 ### Dependencies
