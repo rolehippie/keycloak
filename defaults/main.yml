@@ -149,7 +149,7 @@ keycloak_cache_owners_auth_sessions_count: 1
 keycloak_jgroups_discovery_enabled: false
 
 # @var keycloak_jgroups_discovery_external_ip:description: External IP used for jgroups discovery
-# @var keycloak_url:example: $ "{{ ansible_address }}"
+# @var keycloak_url:example: $ "{{ ansible_facts['address'] }}"
 keycloak_jgroups_discovery_external_ip:
 
 # @var keycloak_jgroups_discovery_protocol:description: Protocol used for jgroups discovery
