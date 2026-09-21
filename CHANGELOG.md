@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.9.1](https://github.com/rolehippie/keycloak/compare/v6.9.0...v6.9.1) (2026-09-21)
+
+### Dependencies
+
+* **mise:** update dependency pipx:ansible-core to v2.21.4 ([#113](https://github.com/rolehippie/keycloak/issues/113)) ([14a30aa](https://github.com/rolehippie/keycloak/commit/14a30aa10f45a6634a31ab3330afaae216b537c5))
+* **mise:** update dependency pipx:ansible-doctor to v8.4.2 ([#115](https://github.com/rolehippie/keycloak/issues/115)) ([605bd40](https://github.com/rolehippie/keycloak/commit/605bd4072455032538fa0950fb3a72f089fa056d))
+* **mise:** update dependency prek to v0.5.3 ([#114](https://github.com/rolehippie/keycloak/issues/114)) ([d1c88d2](https://github.com/rolehippie/keycloak/commit/d1c88d284a80a9ad0108174de52144416a76ae2a))
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.7.4 ([#116](https://github.com/rolehippie/keycloak/issues/116)) ([c7b2c9f](https://github.com/rolehippie/keycloak/commit/c7b2c9f923353a57a03e1d3e5faf334ed61433eb))
+
 ## [6.9.0](https://github.com/rolehippie/keycloak/compare/v6.8.1...v6.9.0) (2026-09-07)
 
 ### Features
