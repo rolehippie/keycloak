@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.10.1](https://github.com/rolehippie/keycloak/compare/v6.10.0...v6.10.1) (2026-10-19)
+
+### Dependencies
+
+* **mise:** update dependency pipx:ansible-doctor to v8.4.3 ([#126](https://github.com/rolehippie/keycloak/issues/126)) ([a3c4e38](https://github.com/rolehippie/keycloak/commit/a3c4e38d8e69565a10ad5670e7625669ded08398))
+* **mise:** update dependency pipx:ansible-lint to v26.10.0 ([#127](https://github.com/rolehippie/keycloak/issues/127)) ([d32a537](https://github.com/rolehippie/keycloak/commit/d32a537678155a50f691afc45efa3e8ca36dfb96))
+* **mise:** update dependency pipx:ansible-lint to v26.10.1 ([#129](https://github.com/rolehippie/keycloak/issues/129)) ([6ab3757](https://github.com/rolehippie/keycloak/commit/6ab3757e3a5d4f7110c22e45ae921f967c07aa61))
+* **mise:** update dependency pipx:molecule to v26.10.0 ([#128](https://github.com/rolehippie/keycloak/issues/128)) ([645bf12](https://github.com/rolehippie/keycloak/commit/645bf128f554667162b355df8f42f6b9b23f5a0f))
+* **mise:** update dependency prek to v0.5.6 ([#131](https://github.com/rolehippie/keycloak/issues/131)) ([6a902c8](https://github.com/rolehippie/keycloak/commit/6a902c88df74cbf71689b40a67227694bf3bc1f1))
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.8.1 ([#130](https://github.com/rolehippie/keycloak/issues/130)) ([f75ae8e](https://github.com/rolehippie/keycloak/commit/f75ae8ea4d6cf91c08d0769d328ed7db998fea7a))
+
 ## [6.10.0](https://github.com/rolehippie/keycloak/compare/v6.9.1...v6.10.0) (2026-10-05)
 
 ### Dependencies
