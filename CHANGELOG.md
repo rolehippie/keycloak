@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.10.2](https://github.com/rolehippie/keycloak/compare/v6.10.1...v6.10.2) (2026-11-09)
+
+### Dependencies
+
+* **mise:** update dependency pipx:ansible-core to v2.22.0 ([#135](https://github.com/rolehippie/keycloak/issues/135)) ([7a0bc68](https://github.com/rolehippie/keycloak/commit/7a0bc684424ef4c1294ea8a57a0810d037cc0659))
+* **mise:** update dependency pipx:ansible-doctor to v8.4.4 ([#140](https://github.com/rolehippie/keycloak/issues/140)) ([fa15849](https://github.com/rolehippie/keycloak/commit/fa15849adc5edca3c65e3020bdfb591af9aa2098))
+* **mise:** update dependency pipx:ansible-lint to v26.11.0 ([#137](https://github.com/rolehippie/keycloak/issues/137)) ([ba3eeb7](https://github.com/rolehippie/keycloak/commit/ba3eeb7494a0621585276f84752a264f3aa4fed1))
+* **mise:** update dependency pipx:molecule to v26.11.0 ([#138](https://github.com/rolehippie/keycloak/issues/138)) ([9d39c73](https://github.com/rolehippie/keycloak/commit/9d39c7302db2aa551fb4a35dac59ee83d7b0c80e))
+* **mise:** update dependency prek to v0.5.10 ([#136](https://github.com/rolehippie/keycloak/issues/136)) ([1e9e3c7](https://github.com/rolehippie/keycloak/commit/1e9e3c7ec762aa9090aedd165b3b04296eedf1f5))
+* **mise:** update dependency prek to v0.5.7 ([#132](https://github.com/rolehippie/keycloak/issues/132)) ([cc978d1](https://github.com/rolehippie/keycloak/commit/cc978d16be621fadfe1cc0e14fcd140010ac558a))
+* **mise:** update dependency prek to v0.5.9 ([#134](https://github.com/rolehippie/keycloak/issues/134)) ([eeeab3d](https://github.com/rolehippie/keycloak/commit/eeeab3d6be66d51e0ce3b0432c54de5966de2db3))
+* **mise:** update node.js to v26 ([#133](https://github.com/rolehippie/keycloak/issues/133)) ([bcc2a77](https://github.com/rolehippie/keycloak/commit/bcc2a7754e9bbf250747813e758c5bd89955bc1f))
+* **patch:** update quay.io/keycloak/keycloak docker tag to v26.8.2 ([#139](https://github.com/rolehippie/keycloak/issues/139)) ([c0d6600](https://github.com/rolehippie/keycloak/commit/c0d6600a9554016a420c164b67d5ff075cc92f2b))
+
 ## [6.10.1](https://github.com/rolehippie/keycloak/compare/v6.10.0...v6.10.1) (2026-10-19)
 
 ### Dependencies
